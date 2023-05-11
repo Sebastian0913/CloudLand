@@ -7,21 +7,31 @@ using UnityEngine.UIElements;
 public class movement : MonoBehaviour
 {
     // Start is called before the first frame update
+    public static movement instance;
     private float dirX = 0f;
     private float speed = 5f;
+    [SerializeField] private int starcount = 0;
     private MovementState state;
     [SerializeField] private float jumpforce = 24f;
     [SerializeField] private float airspeed = 3f;
     [SerializeField] private LayerMask layer;
+    [SerializeField] private LayerMask currency;
     private BoxCollider2D box;
+    private CircleCollider2D circle;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator anim;
     private enum MovementState { IDLE, RUNNING, JUMPING, FALLING, }
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        circle = GetComponent<CircleCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
@@ -29,6 +39,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         dirX = Input.GetAxisRaw("Horizontal");
         if (IsGrounded())
         {
@@ -46,8 +57,11 @@ public class movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
 
         }
+      
         animstate();
         Flip();
+
+        Debug.Log(starcount);
     }
 
     private void Flip() //flips sprite
@@ -101,6 +115,14 @@ public class movement : MonoBehaviour
 
         }
         anim.SetInteger("state", (int)state);
+
+    }
+
+    public void collect(int val) 
+    {
+      starcount+=val;
+
+
 
     }
 }
