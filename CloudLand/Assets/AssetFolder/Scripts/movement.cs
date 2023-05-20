@@ -79,7 +79,7 @@ public class movement : MonoBehaviour
     }
     private bool IsGrounded() //raycast method to check wether sprite is on ground
     {
-        RaycastHit2D rayhit = Physics2D.Raycast(box.bounds.center, Vector2.down, box.bounds.extents.y + 0.1f, layer);
+        RaycastHit2D rayhit = Physics2D.Raycast(box.bounds.center, Vector2.down, box.bounds.extents.y + 0.15f, layer);
         Color color;
         if (rayhit.collider != null)
         {
