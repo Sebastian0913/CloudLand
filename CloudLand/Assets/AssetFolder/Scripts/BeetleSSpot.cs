@@ -23,7 +23,8 @@ public class BeetleSSpot : MonoBehaviour
         {
             Debug.Log("Beetle Enemy Dead");
             BeetleMovementScript.Dead = true;
-            
+            BeetleMovementScript.GetComponent<BoxCollider2D>().isTrigger = true;
+            gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         }
     }
 }
