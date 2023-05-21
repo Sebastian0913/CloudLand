@@ -8,10 +8,12 @@ public class SmallEnemyMovement : MonoBehaviour
     public bool Move = false;
     public int SwitchCounter = 0;
     public int trueCounter = 0;
+    private Animator animator;
+    public bool Dead = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,19 +24,30 @@ public class SmallEnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Move == true && SwitchCounter % 2 == 0)
+        if (Dead == false)
         {
-            gameObject.transform.localScale = new Vector3(2, 2, 2);
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(-5, 0, 0);
+            if (Move == true && SwitchCounter % 2 == 0)
+            {
+                gameObject.transform.localScale = new Vector3(2, 2, 2);
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(-5, 0, 0);
+            }
+            else if (Move == false && SwitchCounter % 2 != 0)
+            {
+                gameObject.transform.localScale = new Vector3(-2, 2, 2);
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(5, 0, 0);
+            }
+            //Debug.Log("SwitchCounter " + SwitchCounter);
+            //Debug.Log("SwitchCounterRem " + SwitchCounter % 2);
+
         }
-        else if (Move == false && SwitchCounter % 2 != 0)
+        else 
+        if (Dead == true)
         {
-            gameObject.transform.localScale = new Vector3(-2, 2, 2);
-            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(5, 0, 0);
+            animator.enabled = false;
+//            gameObject.transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            Debug.Log("SpriteChanged");
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0f, -2f, 0f);
         }
-        //Debug.Log("SwitchCounter " + SwitchCounter);
-        //Debug.Log("SwitchCounterRem " + SwitchCounter % 2);
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

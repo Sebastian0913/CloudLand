@@ -18,9 +18,13 @@ public class BeetleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3 (-1f, 0f, 0f);
+        if(Dead == false)
+        {
+            gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3 (-1f, 0f, 0f);
 
-        if(Dead == true)
+        }
+
+        else if(Dead == true)
         {
             animator.enabled = false;
             spriteRenderer.sprite = DeadSprite;
