@@ -72,12 +72,12 @@ public class movement : MonoBehaviour
         if (dirX > 0f)
         {
 
-            sprite.flipX = false;
+            gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
 
         }
         else if (dirX < 0f)
         {
-            sprite.flipX = true;
+            gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
     private bool IsGrounded() //raycast method to check wether sprite is on ground
