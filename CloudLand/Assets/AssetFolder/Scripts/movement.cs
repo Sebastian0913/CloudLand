@@ -21,6 +21,7 @@ public class movement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator anim;
+    private Vector3 SpawnPoint;
     private enum MovementState { IDLE, RUNNING, JUMPING, FALLING, }
 
     private void Awake()
@@ -29,11 +30,13 @@ public class movement : MonoBehaviour
     }
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
         circle = GetComponent<CircleCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        SpawnPoint = rb.transform.position;
     }
 
     // Update is called once per frame
@@ -60,8 +63,8 @@ public class movement : MonoBehaviour
       
         animstate();
         Flip();
-
-        Debug.Log(starcount);
+        Death();
+        //Debug.Log(starcount);
     }
 
     private void Flip() //flips sprite
@@ -117,7 +120,22 @@ public class movement : MonoBehaviour
         anim.SetInteger("state", (int)state);
 
     }
+    public void Death() 
+    {
+        if (rb.position.y < -1f)
+        {
+            anim.SetTrigger("Death");
+           
 
+        }
+        if (rb.position.y < -5f) 
+        {
+            
+            rb.position = SpawnPoint;
+        
+        }
+    
+    }
     public void collect(int val) 
     {
       starcount+=val;
