@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class movement : MonoBehaviour
 {
     // Start is called before the first frame update
     public static movement instance;
     private float dirX = 0f;
+    private int goal = 40;
+    public TMP_Text cointText;
     private float speed = 5f;
     [SerializeField] private int starcount = 0;
     private MovementState state;
@@ -138,8 +141,14 @@ public class movement : MonoBehaviour
     }
     public void collect(int val) 
     {
-      starcount+=val;
-
+        starcount+=val;
+        
+        goal = goal-1;
+        if(goal<= 0) 
+        {
+         goal = 0;
+        }
+        cointText.text = "STAR GOAL: " + goal.ToString();
 
 
     }
