@@ -20,22 +20,50 @@ public class EyeSmallEnemy : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.collider.tag == "Platform")
+    //    {
+    //        Debug.Log("Collision");
+            
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.collider.tag == "Platform")
+        if (collision.CompareTag("Platform"))
         {
             Debug.Log("Collision");
-            
+
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.collider.tag == "Platform")
+    //    {
+    //        Debug.Log("No Collision");
+    //        SEnemyScript.SwitchCounter++;
+    //        if(SEnemyScript.SwitchCounter % 2 != 0)
+    //        {
+    //            SEnemyScript.Move = false;
+
+    //        }
+    //        else
+    //        {
+    //            SEnemyScript.Move = true;
+    //        }
+    //        //Debug.Log("Move " + SEnemyScript.Move);
+    //    }
+    //}
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.collider.tag == "Platform")
+        if (collision.CompareTag("Platform"))
         {
             Debug.Log("No Collision");
             SEnemyScript.SwitchCounter++;
-            if(SEnemyScript.SwitchCounter % 2 != 0)
+            if (SEnemyScript.SwitchCounter % 2 != 0)
             {
                 SEnemyScript.Move = false;
 
@@ -48,5 +76,5 @@ public class EyeSmallEnemy : MonoBehaviour
         }
     }
 
-    
+
 }
