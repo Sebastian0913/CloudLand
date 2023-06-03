@@ -5,15 +5,23 @@ using UnityEngine;
 public class SmallEnemyMovement : MonoBehaviour
 {
     public GameObject eyes;
+    public GameObject Left;
+    public GameObject Right;
+    private Vector3 left;
+    private Vector3 right;
     public bool Move = false;
     public int SwitchCounter = 0;
     public int trueCounter = 0;
     private Animator animator;
     public bool Dead = false;
+    private bool Walk = false;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        left = Left.transform.position;
+        right = Right.transform.position;   
+
     }
 
     // Update is called once per frame
@@ -24,17 +32,26 @@ public class SmallEnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Dead == false)
+        if (Dead == false && Walk == true)
         {
-            if (Move == true && SwitchCounter % 2 == 0)
+            if (Move == true && gameObject.transform.position.x >= left.x)
             {
                 gameObject.transform.localScale = new Vector3(2, 2, 2);
                 gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(-5, 0, 0);
             }
-            else if (Move == false && SwitchCounter % 2 != 0)
+            else if(Move == true && gameObject.transform.position.x <= left.x)
+            {
+                Move = false;
+            }
+            
+            if (Move == false && gameObject.transform.position.x <= right.x)
             {
                 gameObject.transform.localScale = new Vector3(-2, 2, 2);
                 gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(5, 0, 0);
+            }
+            else if(Move == false && gameObject.transform.position.x >= right.x)
+            {
+                Move = true;
             }
             //Debug.Log("SwitchCounter " + SwitchCounter);
             //Debug.Log("SwitchCounterRem " + SwitchCounter % 2);
@@ -57,6 +74,7 @@ public class SmallEnemyMovement : MonoBehaviour
             if(trueCounter < 1)
             {
                 Move = true;
+                Walk = true;
                 trueCounter ++;
             }
         }
