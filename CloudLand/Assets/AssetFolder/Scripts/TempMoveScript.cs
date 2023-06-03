@@ -20,11 +20,11 @@ public class TempMoveScript : MonoBehaviour
         if (Horizontal < 0)
         {
             Debug.Log(Horizontal);
-            rb.velocity = new Vector3(Horizontal * 5f, 0f , 0f);
+            rb.velocity = new Vector3(Horizontal * 1f, 0f , 0f);
         }
         else if(Horizontal > 0)
         {
-            rb.velocity = new Vector3(Horizontal * 5f, 0f, 0f);
+            rb.velocity = new Vector3(Horizontal * 1f, 0f, 0f);
         }
     }
 }
