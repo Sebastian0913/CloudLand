@@ -5,12 +5,12 @@ using UnityEngine;
 public class RedDummySSPot : MonoBehaviour
 {
     private SmallEnemyMovement SEMovementScript;
-    private EyeSmallEnemy EyeScript;
+    //private EyeSmallEnemy EyeScript;
     // Start is called before the first frame update
     void Start()
     {
         SEMovementScript = FindObjectOfType<SmallEnemyMovement>();
-        EyeScript = FindObjectOfType<EyeSmallEnemy>();
+     //   EyeScript = FindObjectOfType<EyeSmallEnemy>();
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class RedDummySSPot : MonoBehaviour
             SEMovementScript.gameObject.transform.localScale = new Vector3(SEMovementScript.gameObject.transform.localScale.x, -SEMovementScript.gameObject.transform.localScale.y, SEMovementScript.gameObject.transform.localScale.z);
             gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
             SEMovementScript.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            EyeScript.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+          //  EyeScript.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 }

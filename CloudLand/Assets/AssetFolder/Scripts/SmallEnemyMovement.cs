@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SmallEnemyMovement : MonoBehaviour
 {
-    public GameObject eyes;
+   // public GameObject eyes;
     public GameObject Left;
     public GameObject Right;
     private Vector3 left;
     private Vector3 right;
-    public bool Move = false;
-    public int SwitchCounter = 0;
-    public int trueCounter = 0;
+    private bool Move = false;
+    private int SwitchCounter = 0;
+    private int trueCounter = 0;
     private Animator animator;
     public bool Dead = false;
     private bool Walk = false;
