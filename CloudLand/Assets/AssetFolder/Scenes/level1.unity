@@ -1428,6 +1428,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2015780778008026545, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 2015780778008044111, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015780779852124640, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2015780779852124642, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6207784112665505152, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1748,7 +1764,7 @@ GameObject:
   - component: {fileID: 950147883}
   m_Layer: 3
   m_Name: platforms
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
