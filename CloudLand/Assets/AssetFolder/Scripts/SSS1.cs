@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class SSS1 : MonoBehaviour
 {
-    public GameObject target;
+    public Transform target;
     private float movementSpeed = 5f;
 
     private Image SPLetter;
@@ -45,6 +46,8 @@ public class SSS1 : MonoBehaviour
     public int numberOfObjects = 10;
     public float radius = 0.5f;
 
+    public GameObject Dog;
+    private Animator Anim;
     private GameObject Bone;
     public GameObject BonePrefab;
     private Vector3 BoneRestPosition;
@@ -52,29 +55,45 @@ public class SSS1 : MonoBehaviour
     void Start()
     {
         Stars = new List<GameObject> ();
+        Anim = Dog.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Stars.Count);
         if(PlayCounter == 2)
         {
             if(TempIndexbutton == TempIndexLetter)
             {
                 Debug.Log("Correct");
-                PlayCounter = 0;
+                PlayCounter = -100;
                 correctCounter++;
                 DisableButton(TempIndexbutton);
-                if(Bone != null)
-                {
-                    MoveBone(Bone);
-                }
-
+                
             }
             else
             {
                 Debug.Log("InCorrect");
                 PlayCounter = 0;
+            }
+        
+        
+        }
+
+        if (Bone != null)
+        {
+            Debug.Log("Here");
+            Vector2 targetPosition = target.position;
+
+            // Move towards the target position
+            Bone.transform.position = Vector2.MoveTowards(Bone.transform.position, targetPosition, movementSpeed * Time.deltaTime);
+            if(Bone.transform.position.x >= targetPosition.x && Bone.transform.position.y >= targetPosition.y)
+            {
+                Destroy(Bone, 1f);
+                Anim.SetBool("Eat", true);
+                Invoke("ResetAnimation", 2f);
+
             }
         }
     }
@@ -124,7 +143,7 @@ public class SSS1 : MonoBehaviour
         }
     }
     
-    /// ///////////////////////////
+    //////////////////////////////
 
     public void Click1()
     {
@@ -245,12 +264,17 @@ public class SSS1 : MonoBehaviour
 
         for (int i = 0; i < numberOfObjects; i++)
         {
+            
             float angle = i * angleIncrement;
             Vector2 spawnPosition = GetCirclePosition(angle, SpawnObject);
             Star = Instantiate(StarPrefab, spawnPosition, Quaternion.identity);
             Stars.Add(Star);
             SetMovementDirection(Star, angle);
             Destroy(Stars[i], 2f);
+            if(i == numberOfObjects - 1)
+            {
+                Invoke("DeleteObject", 2f);
+            }
         }
     }
 
@@ -271,140 +295,20 @@ public class SSS1 : MonoBehaviour
         obj.GetComponent<Rigidbody2D>().velocity = direction * moveSpeed;
     }
 
-    private void MoveBone(GameObject bone)
+    
+
+    private void DeleteObject()
     {
-        Vector3 direction = (target.transform.position - bone.transform.position).normalized;
-
-        // Calculate the movement for this frame
-        Vector2 movement = direction * movementSpeed * Time.deltaTime;
-
-        // Update the object's position
-        bone.transform.position += (Vector3)movement;
-
+        //Debug.Log(Counter);
+        Stars.Clear();
+      
     }
 
-    //public void Click6()
-    //{
-    //    TempIndexbutton = 6;
-    //    PlayCounter++;
-    //}
+    private void ResetAnimation()
+    {
+        //Debug.Log(Counter);
+        Anim.SetBool("Eat", false);
+        PlayCounter = 0;
 
-    //public void Click7()
-    //{
-    //    TempIndexbutton = 7;
-    //    PlayCounter++;
-    //}
-
-    //public void Click8()
-    //{
-    //    TempIndexbutton = 8;
-    //    PlayCounter++;
-    //}
-
-    //public void Click9()
-    //{
-    //    TempIndexbutton = 9;
-    //    PlayCounter++;
-    //}
-
-    //public void Click10()
-    //{
-    //    TempIndexbutton = 10;
-    //    PlayCounter++;
-    //}
-
-    //public void Click11()
-    //{
-    //    TempIndexbutton = 11;
-    //    PlayCounter++;
-    //}
-    //public void Click12()
-    //{
-    //    TempIndexbutton = 12;
-    //    PlayCounter++;
-    //}
-
-    //public void Click13()
-    //{
-    //    TempIndexbutton = 13;
-    //    PlayCounter++;
-    //}
-
-    //public void Click14()
-    //{
-    //    TempIndexbutton = 14;
-    //    PlayCounter++;
-    //}
-
-    //public void Click15()
-    //{
-    //    TempIndexbutton = 15;
-    //    PlayCounter++;
-    //}
-
-    //public void Click16()
-    //{
-    //    TempIndexbutton = 16;
-    //    PlayCounter++;
-    //}
-
-    //public void Click17()
-    //{
-    //    TempIndexbutton = 17;
-    //    PlayCounter++;
-    //}
-
-    //public void Click18()
-    //{
-    //    TempIndexbutton = 18;
-    //    PlayCounter++;
-    //}
-
-    //public void Click19()
-    //{
-    //    TempIndexbutton = 19;
-    //    PlayCounter++;
-    //}
-
-    //public void Click20()
-    //{
-    //    TempIndexbutton = 20;
-    //    PlayCounter++;
-    //}
-
-    //public void Click21()
-    //{
-    //    TempIndexbutton = 21;
-    //    PlayCounter++;
-    //}
-
-    //public void Click22()
-    //{
-    //    TempIndexbutton = 22;
-    //    PlayCounter++;
-    //}
-
-    //public void Click23()
-    //{
-    //    TempIndexbutton = 23;
-    //    PlayCounter++;
-    //}
-
-    //public void Click24()
-    //{
-    //    TempIndexbutton = 24;
-    //    PlayCounter++;
-    //}
-
-    //public void Click25()
-    //{
-    //    TempIndexbutton = 25;
-    //    PlayCounter++;
-    //}
-
-    //public void Click26()
-    //{
-    //    TempIndexbutton = 26;
-    //    PlayCounter++;
-    //}
+    }
 }
