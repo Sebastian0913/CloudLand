@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SSS1 : MonoBehaviour
 {
+    public GameObject target;
+    private float movementSpeed = 5f;
+
     private Image SPLetter;
     private Image SPButton;
     public Sprite spriteVoid;
@@ -29,10 +32,26 @@ public class SSS1 : MonoBehaviour
     private int TempIndexLetter = 0;
     private int TempIndexbutton = -1;
     private int PlayCounter = 0;
+    public GameObject Spawn1;
+    public GameObject Spawn2;
+    public GameObject Spawn3;
+    public GameObject Spawn4;
+    public GameObject Spawn5;
+    private GameObject SpawnObject;
+    public GameObject StarPrefab;
+    private GameObject Star;
+    private List<GameObject> Stars;
+    public float moveSpeed = 3f;
+    public int numberOfObjects = 10;
+    public float radius = 0.5f;
+
+    private GameObject Bone;
+    public GameObject BonePrefab;
+    private Vector3 BoneRestPosition;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Stars = new List<GameObject> ();
     }
 
     // Update is called once per frame
@@ -46,6 +65,11 @@ public class SSS1 : MonoBehaviour
                 PlayCounter = 0;
                 correctCounter++;
                 DisableButton(TempIndexbutton);
+                if(Bone != null)
+                {
+                    MoveBone(Bone);
+                }
+
             }
             else
             {
@@ -164,6 +188,9 @@ public class SSS1 : MonoBehaviour
             SPButton.sprite = sprite1;
             B1.enabled = false;
             BL1.enabled = false;
+            SpawnObject = Spawn1;
+            Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
+            
         }
         else if (Index == 2)
         {
@@ -173,6 +200,9 @@ public class SSS1 : MonoBehaviour
             SPButton.sprite = sprite2;
             B2.enabled = false;
             BL2.enabled = false;
+            SpawnObject = Spawn2;
+            Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
+            
         }
         else if (Index == 3)
         {
@@ -182,6 +212,9 @@ public class SSS1 : MonoBehaviour
             SPButton.sprite = sprite3;
             B3.enabled = false;
             BL3.enabled = false;
+            SpawnObject = Spawn3;
+            Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
+            
         }
         else if (Index == 4)
         {
@@ -191,6 +224,9 @@ public class SSS1 : MonoBehaviour
             SPButton.sprite = sprite4;
             B4.enabled = false;
             BL4.enabled = false;
+            SpawnObject = Spawn4;
+            Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
+            
         }
         else if (Index == 5)
         {
@@ -200,7 +236,51 @@ public class SSS1 : MonoBehaviour
             SPButton.sprite = sprite5;
             B5.enabled = false;
             BL5.enabled = false;
+            SpawnObject = Spawn5;
+            Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
+            
         }
+
+        float angleIncrement = 360f / numberOfObjects;
+
+        for (int i = 0; i < numberOfObjects; i++)
+        {
+            float angle = i * angleIncrement;
+            Vector2 spawnPosition = GetCirclePosition(angle, SpawnObject);
+            Star = Instantiate(StarPrefab, spawnPosition, Quaternion.identity);
+            Stars.Add(Star);
+            SetMovementDirection(Star, angle);
+            Destroy(Stars[i], 2f);
+        }
+    }
+
+    private Vector2 GetCirclePosition(float angle, GameObject Button)
+    {
+        float radian = angle * Mathf.Deg2Rad;
+        float x = Button.transform.position.x + radius * Mathf.Cos(radian);
+        float y = Button.transform.position.y + radius * Mathf.Sin(radian);
+        return new Vector2(x, y);
+    }
+
+    private void SetMovementDirection(GameObject obj, float angle)
+    {
+        float radian = angle * Mathf.Deg2Rad;
+        float dirX = Mathf.Cos(radian);
+        float dirY = Mathf.Sin(radian);
+        Vector2 direction = new Vector2(dirX, dirY);
+        obj.GetComponent<Rigidbody2D>().velocity = direction * moveSpeed;
+    }
+
+    private void MoveBone(GameObject bone)
+    {
+        Vector3 direction = (target.transform.position - bone.transform.position).normalized;
+
+        // Calculate the movement for this frame
+        Vector2 movement = direction * movementSpeed * Time.deltaTime;
+
+        // Update the object's position
+        bone.transform.position += (Vector3)movement;
+
     }
 
     //public void Click6()
