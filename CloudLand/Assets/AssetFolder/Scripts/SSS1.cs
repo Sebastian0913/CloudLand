@@ -17,18 +17,21 @@ public class SSS1 : MonoBehaviour
     public Sprite sprite3;
     public Sprite sprite4;
     public Sprite sprite5;
+    public Sprite sprite6;
 
     public Button BL1;
     public Button BL2;
     public Button BL3;
     public Button BL4;
     public Button BL5;
+    public Button BL6;
 
     public Button B1;
     public Button B2;
     public Button B3;
     public Button B4;
     public Button B5;
+    public Button B6;
     private int correctCounter = 0;
     private int TempIndexLetter = 0;
     private int TempIndexbutton = -1;
@@ -38,6 +41,7 @@ public class SSS1 : MonoBehaviour
     public GameObject Spawn3;
     public GameObject Spawn4;
     public GameObject Spawn5;
+    public GameObject Spawn6;
     private GameObject SpawnObject;
     public GameObject StarPrefab;
     private GameObject Star;
@@ -142,7 +146,16 @@ public class SSS1 : MonoBehaviour
             PlayCounter++;
         }
     }
-    
+
+    public void ClickLetter6()
+    {
+        if (PlayCounter < 1)
+        {
+            TempIndexLetter = 6;
+            PlayCounter++;
+        }
+    }
+
     //////////////////////////////
 
     public void Click1()
@@ -187,6 +200,15 @@ public class SSS1 : MonoBehaviour
         if(PlayCounter > 0)
         {
             TempIndexbutton = 5;
+            PlayCounter++;
+        }
+    }
+
+    public void Click6()
+    {
+        if (PlayCounter > 0)
+        {
+            TempIndexbutton = 6;
             PlayCounter++;
         }
     }
@@ -258,6 +280,19 @@ public class SSS1 : MonoBehaviour
             SpawnObject = Spawn5;
             Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
             
+        }
+
+        else if (Index == 6)
+        {
+            SPLetter = BL6.GetComponent<Image>();
+            SPLetter.sprite = spriteVoid;
+            SPButton = B6.GetComponent<Image>();
+            SPButton.sprite = sprite6;
+            B6.enabled = false;
+            BL6.enabled = false;
+            SpawnObject = Spawn6;
+            Bone = Instantiate(BonePrefab, SpawnObject.transform.position, Quaternion.identity);
+
         }
 
         float angleIncrement = 360f / numberOfObjects;
