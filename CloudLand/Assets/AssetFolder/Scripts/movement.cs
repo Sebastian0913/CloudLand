@@ -26,10 +26,12 @@ public class movement : MonoBehaviour
     private Animator anim;
     private Vector3 SpawnPoint;
     private enum MovementState { IDLE, RUNNING, JUMPING, FALLING, }
+    private SoundManager soundManager;
 
     private void Awake()
     {
         instance = this;
+        soundManager = FindObjectOfType<SoundManager>();    
     }
     void Start()
     {
@@ -61,6 +63,7 @@ public class movement : MonoBehaviour
         {
 
             rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+            soundManager.SelectAudio(0, 0.5f);
 
         }
       
@@ -125,10 +128,13 @@ public class movement : MonoBehaviour
     }
     public void Death() 
     {
+      
+        
         if (rb.position.y < -1f)
         {
             anim.SetTrigger("Death");
-           
+            soundManager.SelectAudio(4, 0.1f);
+
 
         }
         if (rb.position.y < -5f) 

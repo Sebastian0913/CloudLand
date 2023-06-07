@@ -7,10 +7,12 @@ public class star_scripts : MonoBehaviour
     private BoxCollider2D box;
     [SerializeField] private LayerMask layer;
     public int value;
+    private SoundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
         box = GetComponent<BoxCollider2D>();
+        soundManager = FindObjectOfType<SoundManager>();
 
     }
 
@@ -27,6 +29,7 @@ public class star_scripts : MonoBehaviour
     {
         if (box.IsTouchingLayers(layer)) 
         {
+            soundManager.SelectAudio(2, 0.2f);
             kill();
             movement.instance.collect(value);
         
