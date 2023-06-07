@@ -11,11 +11,14 @@ public class LetterUnboxing : MonoBehaviour
     private GameObject Star;
     private FollowPlayerScript FollowPlayer;
     private List<GameObject> Stars;
+    private SoundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
         FollowPlayer = FindAnyObjectByType<FollowPlayerScript>();
         Stars = new List<GameObject>();
+        soundManager = FindObjectOfType<SoundManager>();
+
     }
 
     // Update is called once per frame
@@ -28,6 +31,8 @@ public class LetterUnboxing : MonoBehaviour
     {
         if(collision.collider.tag == "Player")
         {
+
+            
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
 

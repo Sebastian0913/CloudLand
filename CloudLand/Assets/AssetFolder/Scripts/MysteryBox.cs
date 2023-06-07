@@ -16,10 +16,12 @@ public class MysteryBox : MonoBehaviour
     private int LaunchCounter = 0;
     private Vector3 SpawnPosition;
     // Start is called before the first frame update
+    private SoundManager soundManager;
     void Start()
     {
         SpawnPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z);
         SR = GetComponent<SpriteRenderer>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,8 @@ public class MysteryBox : MonoBehaviour
     {
         int Choice;
         if(collision.collider.tag == "Player")
+
+            soundManager.SelectAudio(3, 0.5f);
         {
 
             if(LaunchCounter < 1)
