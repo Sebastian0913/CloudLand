@@ -155,7 +155,7 @@ public class movement : MonoBehaviour
         {
          goal = 0;
         }
-        cointText.text = "STAR GOAL: " + goal.ToString();
+        cointText.text =  goal.ToString();
 
 
     }
