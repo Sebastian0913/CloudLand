@@ -34,11 +34,13 @@ public class MysteryBox : MonoBehaviour
     {
         int Choice;
         if(collision.collider.tag == "Player")
-
-            soundManager.SelectAudio(3, 0.5f);
         {
+            if (soundManager != null)
+            {
+                soundManager.SelectAudio(3, 0.5f);
+            }
 
-            if(LaunchCounter < 1)
+            if (LaunchCounter < 1)
             {
                 Debug.Log("Instantiate");
                 SR.sprite = TouchedSprite;
