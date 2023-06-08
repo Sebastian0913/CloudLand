@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowPlayerScript : MonoBehaviour
 {
     public Transform target;
-    public float moveSpeed = 0.5f;
+    private float moveSpeed = 2f;
     public bool Begin = false;
     // Start is called before the first frame update
     void Start()
@@ -14,7 +14,7 @@ public class FollowPlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (Begin == true)
         {
@@ -22,15 +22,16 @@ public class FollowPlayerScript : MonoBehaviour
             //Vector2 smoothedPosition = Vector2.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
             //transform.position = smoothedPosition;
             transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-            if (transform.position.x >= target.position.x && transform.position.y >= target.position.y)
+            if(transform.position == target.position)
             {
-                Destroy(gameObject);
+                Destroy(gameObject, 1f);
             }
+            //if (transform.position.x >= target.position.x && transform.position.y >= target.position.y)
+            //{
+            //    Destroy(gameObject);
+            //}
         }
     }
 
-    private void LateUpdate()
-    {
-        
-    }
+    
 }
