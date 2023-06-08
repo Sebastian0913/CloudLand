@@ -140,7 +140,8 @@ public class movement : MonoBehaviour
         if (rb.position.y < -5f) 
         {
             
-            rb.position = SpawnPoint;
+            rb.position = new Vector3(SpawnPoint.x, SpawnPoint.y + 3f, SpawnPoint.z);
+            Debug.Log(SpawnPoint);
         
         }
     
@@ -157,5 +158,13 @@ public class movement : MonoBehaviour
         cointText.text = "STAR GOAL: " + goal.ToString();
 
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "SavePosition")
+        {
+            SpawnPoint = collision.transform.position;
+        }
     }
 }

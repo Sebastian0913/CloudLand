@@ -253,7 +253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &858568745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -398,7 +398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1046011637
 Rigidbody2D:
   serializedVersion: 4
@@ -748,7 +748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6974436943548608385, guid: db450992c1a8e1244bb90c911c2d3889, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6974436943548608387, guid: db450992c1a8e1244bb90c911c2d3889, type: 3}
       propertyPath: m_RootOrder
@@ -807,6 +807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog
       objectReference: {fileID: 0}
+    - target: {fileID: 1344077591288410616, guid: bbceb99c0d34ff94598030517c728b28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1344077591288410618, guid: bbceb99c0d34ff94598030517c728b28, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -863,6 +867,10 @@ PrefabInstance:
     - target: {fileID: 6764425642545343427, guid: f0cc5b8de4e99824d9358e8c5c0706c5, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764425642545343427, guid: f0cc5b8de4e99824d9358e8c5c0706c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6764425642545343436, guid: f0cc5b8de4e99824d9358e8c5c0706c5, type: 3}
       propertyPath: Dog
