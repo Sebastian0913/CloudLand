@@ -81,7 +81,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6207784113596792166, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
       propertyPath: m_Name
-      value: RedDummy
+      value: RedDummy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207784113596792167, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207784113596792167, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8ecf6a688023a24daba2c4284524a95, type: 3}

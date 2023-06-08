@@ -1523,6 +1523,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e57431e253f2ee4cbd38376d2df8342, type: 3}
+--- !u!114 &435149491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7005137023283058436, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
+  m_PrefabInstance: {fileID: 824756821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748a99261093e54d9d082fa068e2cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &435209611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2746,6 +2757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedDummy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7005137023283058433, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7005137023283058437, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2790,6 +2805,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7005137025310796419, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
+      propertyPath: SEMovementScript
+      value: 
+      objectReference: {fileID: 435149491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
 --- !u!1001 &832236921
@@ -28922,6 +28941,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8f18bcbe54782b4db51e698c10ebcdd, type: 3}
+--- !u!114 &1694575387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7005137023283058436, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
+  m_PrefabInstance: {fileID: 3968029441654074577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7748a99261093e54d9d082fa068e2cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1701504545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30012,5 +30042,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7005137025310796419, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
+      propertyPath: SEMovementScript
+      value: 
+      objectReference: {fileID: 1694575387}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e340e3bea7ddf72428392b4db572e180, type: 3}
