@@ -10,7 +10,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     public static movement instance;
     private float dirX = 0f;
-    private int goal = 40;
+    public int goal = 40;
     public TMP_Text cointText;
     private float speed = 5f;
     [SerializeField] private int starcount = 0;
